@@ -3,6 +3,7 @@ import Headers from "../components/header";
 import '../styles/prehome.css'
 import '../styles/header.css' // Import the CSS file
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 function Prehome() {
     const navigate = useNavigate();  // Hook to navigate programmatically
@@ -36,6 +37,7 @@ function Prehome() {
                         <button onClick={buyerpage}>Shop Now</button>
                     </div>
                 </div>
+                <Footer/>
 
                 
             </div>
