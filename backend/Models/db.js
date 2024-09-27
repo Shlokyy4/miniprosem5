@@ -1,10 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+main().then(() => {
+    console.log('Connected to the database of ecomart2');
+})
+.catch(err => console.log('Failed to connect to the database of ecomart2', err));
 
-const mongo_url = process.env.MONGO_CONN;
-
-mongoose.connect(mongo_url)
-    .then(() => {
-        console.log('MongoDB Connected...');
-    }).catch((err) => {
-        console.log('MongoDB Connection Error: ', err);
-    })
+async function main() {
+await mongoose.connect('mongodb://127.0.0.1:27017/ecomart2', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+});
+}

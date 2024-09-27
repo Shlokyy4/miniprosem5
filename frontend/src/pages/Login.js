@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import Navbar from '../components/navbar';
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
 
 function Login() {
+    
 
     const [loginInfo, setLoginInfo] = useState({
         email: '',
@@ -27,7 +29,7 @@ function Login() {
             return handleError('email and password are required')
         }
         try {
-            const url = `https://deploy-mern-app-1-api.vercel.app/auth/login`;
+            const url = `http://localhost:8080/auth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -57,7 +59,10 @@ function Login() {
     }
 
     return (
+        <>
+        <Navbar/>
         <div className='container'>
+            <h4 align="center">Welcome to Ecomart</h4>
             <h1>Login</h1>
             <form onSubmit={handleLogin}>
                 <div>
@@ -81,12 +86,13 @@ function Login() {
                     />
                 </div>
                 <button type='submit'>Login</button>
-                <span>Does't have an account ?
+                <span>Doesn't have an account ? 
                     <Link to="/signup">Signup</Link>
                 </span>
             </form>
             <ToastContainer />
         </div>
+        </>
     )
 }
 

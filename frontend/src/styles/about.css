@@ -1,0 +1,47 @@
+/* aboutus.css */
+
+.aboutus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f0f8f5; /* Light green background */
+    color: #333;
+    text-align: center;
+}
+
+.aboutus-container h1 {
+    color: #2d572c; /* Dark green text */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.aboutus-container h2 {
+    color: #4caf50; /* Lighter green text for headings */
+    font-size: 2em;
+    margin: 20px 0 10px;
+}
+
+.aboutus-container p {
+    font-size: 1.2em;
+    margin: 10px 0 20px;
+    max-width: 800px; /* Limiting the width for better readability */
+}
+
+.aboutus-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.aboutus-container ul li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.aboutus-image {
+    width: 100%; /* Responsive image */
+    max-width: 600px; /* Maximum width for large screens */
+    border-radius: 10px;
+    margin: 20px 0;
+}

@@ -1,48 +1,50 @@
 import React, { useState } from 'react'
+import Navbar from '../components/navbar';
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
-import "../styles/signup.css"
-import Navbar from "../components/navbar";
 
-function Signup() {
+function Vendorlogin() {
+    
 
-    const [signupInfo, setSignupInfo] = useState({
-        name: '',
+    const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
     })
 
     const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         console.log(name, value);
-        const copySignupInfo = { ...signupInfo };
-        copySignupInfo[name] = value;
-        setSignupInfo(copySignupInfo);
+        const copyLoginInfo = { ...loginInfo };
+        copyLoginInfo[name] = value;
+        setLoginInfo(copyLoginInfo);
     }
 
-    const handleSignup = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        const { name, email, password } = signupInfo;
-        if (!name || !email || !password) {
-            return handleError('name, email and password are required')
+        const { email, password } = loginInfo;
+        if (!email || !password) {
+            return handleError('email and password are required')
         }
         try {
-            const url = `http://localhost:8080/auth/signup`;
+            const url = `http://localhost:8080/venauth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(signupInfo)
+                body: JSON.stringify(loginInfo)
             });
             const result = await response.json();
-            const { success, message, error } = result;
+            const { success, message, jwtToken, name, error } = result;
             if (success) {
                 handleSuccess(message);
+                localStorage.setItem('token', jwtToken);
+                localStorage.setItem('loggedInUser', name);
                 setTimeout(() => {
-                    navigate('/login')
+                    navigate('/home')
                 }, 1000)
             } else if (error) {
                 const details = error?.details[0].message;
@@ -55,23 +57,14 @@ function Signup() {
             handleError(err);
         }
     }
+
     return (
         <>
         <Navbar/>
         <div className='container'>
-            <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        autoFocus
-                        placeholder='Enter your name...'
-                        value={signupInfo.name}
-                    />
-                </div>
+            <h4 align="center">Welcome to Ecomart</h4>
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
                 <div>
                     <label htmlFor='email'>Email</label>
                     <input
@@ -79,7 +72,7 @@ function Signup() {
                         type='email'
                         name='email'
                         placeholder='Enter your email...'
-                        value={signupInfo.email}
+                        value={loginInfo.email}
                     />
                 </div>
                 <div>
@@ -89,12 +82,13 @@ function Signup() {
                         type='password'
                         name='password'
                         placeholder='Enter your password...'
-                        value={signupInfo.password}
+                        value={loginInfo.password}
                     />
                 </div>
-                <button type='submit'>Signup</button>
-                <span>Already have an account ?
-                    <Link to="/login">Login</Link>
+                <button type='submit'>Login</button>
+
+                <span>Doesn't have an account ? 
+                    <Link to="/vendorregisteration">Signup</Link>
                 </span>
             </form>
             <ToastContainer />
@@ -103,4 +97,4 @@ function Signup() {
     )
 }
 
-export default Signup
+export default Vendorlogin
