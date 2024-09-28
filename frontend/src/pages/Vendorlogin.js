@@ -85,7 +85,7 @@ function Vendorlogin({ setIsAuthenticated }) {  // Pass setIsAuthenticated as a 
                     <button type='submit'>Login</button>
 
                     <span>Doesn't have an account? 
-                        <Link to="/vendorregisteration">Signup</Link>
+                        <Link to="/vendorsignup">Signup</Link>
                     </span>
                 </form>
                 <ToastContainer />

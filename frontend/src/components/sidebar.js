@@ -1,28 +1,19 @@
 import React from 'react';
-import '../styles/Sidebar.css';
-import { FaUser, FaBox, FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import "../styles/dashboard.css"; // Import your styles
 
 const Sidebar = () => {
-  return (
-    <div className="sidebar">
-      <div className="sidebar-item">
-        <FaUser className="icon" />
-        <span>My Profile</span>
-      </div>
-      <div className="sidebar-item">
-        <FaBox className="icon" />
-        <span>Orders</span>
-      </div>
-      <div className="sidebar-item">
-        <FaHeart className="icon" />
-        <span>Wishlist</span>
-      </div>
-      <div className="sidebar-item">
-        <FaShoppingCart className="icon" />
-        <span>Kart</span>
-      </div>
-    </div>
-  );
+    return (
+        <div className="sidebar">
+            <h2>Dashboard</h2>
+            <ul className="sidebar-links">
+                <li><Link to="/profile">My Profile</Link></li>
+                <li><Link to="/cart">Cart</Link></li>
+                <li><Link to="/orders">Orders</Link></li>
+                <li><Link to="/wishlist">Wishlist</Link></li>
+            </ul>
+        </div>
+    );
 };
 
 export default Sidebar;

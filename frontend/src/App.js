@@ -11,6 +11,7 @@ import RefrshHandler from './RefrshHandler';
 import VendorSignup from './pages/VendorSignup';
 import Vendorlogin from './pages/Vendorlogin';
 import VendorDashboard from './pages/VendorDashboard';
+import CustomerDashboard from './pages/customerDashboard';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,7 +43,7 @@ function App() {
         
 
         {/* Protected routes */}
-        {/* <Route path='/home' element={<PrivateRoute element={<Home />} />} /> */}
+        <Route path='/customerDashboard' element={<PrivateRoute element={<CustomerDashboard />} />} />
        
         <Route path='/vendordashboard' element={<PrivateRoute element={<VendorDashboard/>} />} />
       </Routes>

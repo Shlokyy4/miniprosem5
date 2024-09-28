@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
+import LogoutButton from '../components/LogoutButton';
 import customerDashbord from "./customerDashboard"
 
 function Home() {
@@ -12,14 +13,16 @@ function Home() {
         setLoggedInUser(localStorage.getItem('loggedInUser'))
     }, [])
 
-    const handleLogout = (e) => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedInUser');
-        handleSuccess('User Loggedout');
-        setTimeout(() => {
-            navigate('/');
-        }, 1000)
-    }
+    // const handleLogout = (e) => {
+    //     localStorage.removeItem('token');
+    //     localStorage.removeItem('loggedInUser');
+    //     handleSuccess('User Loggedout');
+    //     setTimeout(() => {
+    //         navigate('/');
+    //     }, 1000)
+    // }
+
+
 
     const fetchProducts = async () => {
         try {
@@ -44,7 +47,7 @@ function Home() {
     return (
         <div>
             <h1>Welcome {loggedInUser}</h1>
-            <button onClick={handleLogout}>Logout</button>
+            <LogoutButton/>
             {/* <div>
                 {
                     products && products?.map((item, index) => (

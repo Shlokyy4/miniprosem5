@@ -3,22 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 import "../styles/vendorDashboard.css";
+import LogoutButton from '../components/LogoutButton';
 
-const VendorDashboard = () => {
+const VendorDashboard = ({ onLogout }) => {
     const navigate = useNavigate();
 
-    const handleLogout = (e) => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedInUser');
-        handleSuccess('User Loggedout');
-        setTimeout(() => {
-            navigate('/');
-        }, 1000)
-    }
+    // const handleLogout = (e) => {
+    //     localStorage.removeItem('token');
+    //     localStorage.removeItem('loggedInUser');
+    //     handleSuccess('User Loggedout');
+    //     setTimeout(() => {
+    //         navigate('/');
+    //     }, 1000)
+    // }
+
+
 
     return (
         <div className="dashboard-container">
-             <button onClick={handleLogout}>Logout</button>
+             
             <aside className="sidebar">
                 <div className="vendor-name">Vendor Name</div>
                 <ul className="sidebar-links">
@@ -28,6 +31,7 @@ const VendorDashboard = () => {
                     <li onClick={() => navigate('/dashboard/account')}>Account Settings</li>
                 </ul>
             </aside>
+            <LogoutButton onLogout={onLogout} />
             
             <main className="main-content">
                 {/* This section will change based on selected sidebar link */}
