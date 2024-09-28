@@ -1,12 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { handleError, handleSuccess } from '../utils';
+import { ToastContainer } from 'react-toastify';
 import "../styles/vendorDashboard.css";
 
 const VendorDashboard = () => {
     const navigate = useNavigate();
 
+    const handleLogout = (e) => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('loggedInUser');
+        handleSuccess('User Loggedout');
+        setTimeout(() => {
+            navigate('/');
+        }, 1000)
+    }
+
     return (
         <div className="dashboard-container">
+             <button onClick={handleLogout}>Logout</button>
             <aside className="sidebar">
                 <div className="vendor-name">Vendor Name</div>
                 <ul className="sidebar-links">
@@ -24,6 +36,7 @@ const VendorDashboard = () => {
                     <p>Here you can manage your products, track orders, and view sales performance.</p>
                 </section>
             </main>
+            <ToastContainer/>
         </div>
     );
 }
