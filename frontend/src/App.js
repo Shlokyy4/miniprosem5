@@ -5,7 +5,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Prehome from './pages/Prehome';
 import About from './pages/About';
-
+// import CustomerDashboard from './pages/customerDashboard';
 import { useState, useEffect } from 'react';
 import RefrshHandler from './RefrshHandler';
 import VendorSignup from './pages/VendorSignup';
@@ -39,10 +39,11 @@ function App() {
         <Route path='/vendorsignup' element={<VendorSignup />} />
         <Route path='/vendorlogin' element={<Vendorlogin setIsAuthenticated={setIsAuthenticated} />} />  {/* Pass down setIsAuthenticated */}
         <Route path='/AboutUs' element={<About />} />
-        <Route path='*' element={<Prehome />} />
+        
 
         {/* Protected routes */}
-        <Route path='/home' element={<PrivateRoute element={<Home />} />} />
+        {/* <Route path='/home' element={<PrivateRoute element={<Home />} />} /> */}
+       
         <Route path='/vendordashboard' element={<PrivateRoute element={<VendorDashboard/>} />} />
       </Routes>
     </div>

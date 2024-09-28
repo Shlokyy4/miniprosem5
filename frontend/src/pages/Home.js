@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
+import customerDashbord from "./customerDashboard"
 
 function Home() {
     const [loggedInUser, setLoggedInUser] = useState('');
@@ -44,7 +45,7 @@ function Home() {
         <div>
             <h1>Welcome {loggedInUser}</h1>
             <button onClick={handleLogout}>Logout</button>
-            <div>
+            {/* <div>
                 {
                     products && products?.map((item, index) => (
                         <ul key={index}>
@@ -52,7 +53,10 @@ function Home() {
                         </ul>
                     ))
                 }
-            </div>
+            </div> */}
+            <customerDashbord/>
+
+
             <ToastContainer />
         </div>
     )
