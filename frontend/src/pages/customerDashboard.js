@@ -4,6 +4,7 @@ import LogoutButton from '../components/LogoutButton';
 import "../styles/dashboard.css";
 
 const customerDashboard = ({ onLogout }) => {
+  
     return (
         <div className="dashboard-container">
             <Sidebar />

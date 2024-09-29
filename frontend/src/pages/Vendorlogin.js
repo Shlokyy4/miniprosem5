@@ -41,10 +41,10 @@ function Vendorlogin({ setIsAuthenticated }) {  // Pass setIsAuthenticated as a 
                 handleSuccess(message);
                 localStorage.setItem('token', jwtToken);
                 localStorage.setItem('loggedInUser', name);
-                setIsAuthenticated(true);  // Set authentication state to true
+                setIsAuthenticated(true);  // Wait for state update before navigating
                 setTimeout(() => {
-                    navigate('/vendordashboard');
-                }, 1000);
+                    navigate('/vendordashboard');  // Delay the navigation to allow state update
+                }, 500);  // Short delay to ensure smooth navigation
             } else if (error) {
                 handleError(error.details[0].message);
             } else if (!success) {
@@ -54,12 +54,13 @@ function Vendorlogin({ setIsAuthenticated }) {  // Pass setIsAuthenticated as a 
             handleError(err);
         }
     };
+    
 
     return (
         <>
             <Navbar />
             <div className='container'>
-                <h4 align="center">Welcome to Ecomart</h4>
+                <h4 align="center">Take your Business online with Ecomart</h4>
                 <h1>Login</h1>
                 <form onSubmit={handleLogin}>
                     <div>

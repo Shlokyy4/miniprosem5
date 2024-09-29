@@ -7,18 +7,6 @@ import LogoutButton from '../components/LogoutButton';
 
 const VendorDashboard = ({ onLogout }) => {
     const navigate = useNavigate();
-
-    // const handleLogout = (e) => {
-    //     localStorage.removeItem('token');
-    //     localStorage.removeItem('loggedInUser');
-    //     handleSuccess('User Loggedout');
-    //     setTimeout(() => {
-    //         navigate('/');
-    //     }, 1000)
-    // }
-
-
-
     return (
         <div className="dashboard-container">
              
