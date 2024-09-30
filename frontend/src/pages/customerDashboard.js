@@ -3,10 +3,15 @@ import Sidebar from '../components/sidebar';
 import LogoutButton from '../components/LogoutButton';
 import "../styles/dashboard.css";
 import ProductCard from '../components/ProductCard';
-import Navbar from '../components/navbar';
+
 
 const CustomerDashboard = ({ onLogout }) => {
     const [products, setProducts] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useState('');
+    
+    useEffect(() => {
+        setLoggedInUser(localStorage.getItem('loggedInUser'))
+    }, [])
 
     // Fetch products from backend
     useEffect(() => {
