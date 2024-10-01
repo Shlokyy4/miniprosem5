@@ -1,18 +1,22 @@
 /* prehome.css */
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8f5; /* Light green background */
-    color: #333;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
     margin: 0;
     padding: 0;
+    background-color: #f0f8f5; /* Light green background */
+    color: #333;
 }
 
 .prehome-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 0px;
+    margin-bottom: 0px;
 }
 
 .prehome-header {
@@ -59,6 +63,7 @@ h1 {
     border: 1px solid #a3d9a5;
     border-radius: 10px;
     padding: 20px;
+    padding-bottom: 20px;
     width: 45%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     text-align: center;
@@ -97,7 +102,7 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Additional enhancements */
+
 header::after {
     content: '';
     display: block;
@@ -140,4 +145,35 @@ header::after {
 
 .card {
     animation: slideIn 1s ease-in-out;
+}
+
+.prehome-content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+    .prehome-content {
+        flex-direction: column-reverse; /* Stack cards vertically with "Shop Eco-Friendly" on top */
+        align-items: center;
+    }
+
+    .card {
+        width: 80%; /* Make cards take up more width in mobile view */
+        margin-bottom: 20px; /* Add some spacing between the cards */
+    }
+}
+
+
+
+.card-image {
+    width: 100%; /* Adjust as per your desired width */
+    max-height: 150px; /* Adjust height to control the image size */
+    object-fit: cover; /* Ensures the image fits the card without distortion */
+    border-radius: 10px 10px 0 0; /* Rounded corners on top */
+    margin-bottom: 10px; /* Space between image and content */
 }

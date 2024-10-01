@@ -10,9 +10,9 @@ function RefrshHandler({ setIsAuthenticated }) {
         if (localStorage.getItem('token')) {
             setIsAuthenticated(true);
 
-            if (['/', '/login', '/signup'].includes(location.pathname)) {
-                navigate('/', { replace: false });
-            }
+            // if (['/', '/login', '/signup'].includes(location.pathname)) {
+            //     navigate('/', { replace: false });
+            // }
         }
     }, [location.pathname, navigate, setIsAuthenticated]);
 

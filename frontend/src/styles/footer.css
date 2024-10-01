@@ -1,31 +1,35 @@
 /* Ensures the footer is at the bottom of the page */
 html, body {
-    height: 100%; /* Makes sure the body takes up the full height of the page */
+    height: 100%; /* Ensures the body takes up the full height of the page */
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
 }
 
 #root {
-    flex: 1; /* This is necessary if using React with a root div */
+    flex: 1; /* This ensures the root grows and fills the available space */
     display: flex;
     flex-direction: column;
 }
 
 .main-content {
-    flex-grow: 1; /* This will make the main content take up the remaining space */
+    flex-grow: 1; /* Ensures this content grows and fills the remaining space */
 }
 
-/* Footer styles */
 .footer {
     background-color: #2d572c;
     color: white;
-    padding: 15px 0;
+    padding: 10px;
     text-align: center;
     font-size: 0.9rem;
     width: 100%;
-    position: relative; /* Set to relative so it can naturally appear below the content */
-    bottom: 0; /* Keeps it at the bottom when there's little content */
+    flex-shrink: 0; /* Ensures the footer does not shrink and stays at the bottom */
+    position: relative; /* Footer naturally placed at the bottom */
 }
 
 .footer h3 {
