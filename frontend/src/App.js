@@ -11,6 +11,8 @@ import VendorSignup from './pages/VendorSignup';
 import VendorLogin from './pages/Vendorlogin';
 import VendorDashboard from './pages/VendorDashboard';
 import CustomerDashboard from './pages/customerDashboard';
+import AddProduct from './components/AddProduct';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,8 +39,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/vendorsignup" element={<VendorSignup />} />
+        <Route path="/dashboard/products" element={<AddProduct />} />
         <Route path="/vendorlogin" element={<VendorLogin setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/AboutUs" element={<About />} />
+       
 
         {/* Protected routes */}
         <Route
