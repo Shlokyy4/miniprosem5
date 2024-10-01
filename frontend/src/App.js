@@ -5,13 +5,14 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Prehome from './pages/Prehome';
 import About from './pages/About';
-// import CustomerDashboard from './pages/customerDashboard';
 import { useState, useEffect } from 'react';
 import RefrshHandler from './RefrshHandler';
 import VendorSignup from './pages/VendorSignup';
-import Vendorlogin from './pages/Vendorlogin';
+import VendorLogin from './pages/Vendorlogin';
 import VendorDashboard from './pages/VendorDashboard';
 import CustomerDashboard from './pages/customerDashboard';
+import AddProduct from './components/AddProduct';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,26 +27,32 @@ function App() {
   }, []);
 
   const PrivateRoute = ({ element }) => {
-    return isAuthenticated ? element : <Navigate to="/vendorlogin" />;  // Redirect to vendor login
+    return isAuthenticated ? element : <Navigate to="/vendorlogin" replace />;
   };
 
   return (
     <div className="App">
       <RefrshHandler setIsAuthenticated={setIsAuthenticated} />
       <Routes>
-        {/* Login routes */}
-        <Route path='/' element={<Prehome />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/vendorsignup' element={<VendorSignup />} />
-        <Route path='/vendorlogin' element={<Vendorlogin setIsAuthenticated={setIsAuthenticated} />} />  {/* Pass down setIsAuthenticated */}
-        <Route path='/AboutUs' element={<About />} />
-        
+        {/* Public routes */}
+        <Route path="/" element={<Prehome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/vendorsignup" element={<VendorSignup />} />
+        <Route path="/dashboard/products" element={<AddProduct />} />
+        <Route path="/vendorlogin" element={<VendorLogin setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/AboutUs" element={<About />} />
+       
 
         {/* Protected routes */}
-        <Route path='/customerDashboard' element={<PrivateRoute element={<CustomerDashboard />} />} />
-       
-        <Route path='/vendordashboard' element={<PrivateRoute element={<VendorDashboard/>} />} />
+        <Route
+          path="/customerDashboard"
+          element={<PrivateRoute element={<CustomerDashboard />} />}
+        />
+        <Route
+          path="/vendordashboard"
+          element={<PrivateRoute element={<VendorDashboard />} />}
+        />
       </Routes>
     </div>
   );
